@@ -1,4 +1,6 @@
-const { ApolloServer, gql } = require("apollo-server");
+const { ApolloServer, gql } = require("apollo-server-express");
+const express = require("express");
+const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 
@@ -40,6 +42,12 @@ const server = new ApolloServer({
   resolvers,
 });
 
-server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+const app = express();
+server.applyMiddleware({ app });
+
+app.use(express.static("public"));
+app.use(cors());
+
+app.listen({ port: 4000 }, () => {
+  console.log(`🚀 Server ready at http://localhost:4000`);
 });

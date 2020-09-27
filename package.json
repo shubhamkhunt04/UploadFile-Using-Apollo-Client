@@ -9,6 +9,9 @@
   "author": "Shubham Khunt",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.18.1"
+    "apollo-server": "^2.18.1",
+    "apollo-server-express": "^2.18.1",
+    "cors": "^2.8.5",
+    "graphql": "^15.3.0"
   }
 }
